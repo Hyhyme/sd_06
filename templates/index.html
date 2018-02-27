@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Movie Database</title>
+</head>
+
+<body>
+    <h1>Search the Movie Database!</h1>
+    <p>
+      This dataset contains information about American movies released in the last century.
+      Please put in a movie genre (Comedy, Action, etc.) and year of release to see a list
+      of movies released in that year from the given genre.
+    </p>
+    <br><br>
+    <form action="/" method="POST">
+      Genre:
+      <input name="genre"></input>
+      <br>
+      Year:
+      <input name="year"></input>
+      <br>
+      <button value="submit">Submit</button>
+    </form>
+    <br><br>
+    Results:
+    <ul>
+      {% for title in titles %}
+      <li>{{ title }}</li>
+    </ul>
+
+</body>
+
+</html>

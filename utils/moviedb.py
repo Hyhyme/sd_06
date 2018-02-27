@@ -9,9 +9,13 @@
 import pymongo, json
 
 
-# create/connect to the database, then create/connect to the collection
+# connect to the server
 connection = pymongo.MongoClient("homer.stuy.edu")
+# drop the database
+connection.drop_database("goldmanJ-luoE")
+# make the database
 db = connection[ "goldmanJ-luoE" ]
+# isolate the connection
 collection = db[ "movies" ]
 
 # fills the collection with the data
@@ -21,7 +25,7 @@ def fill_collection():
     for document in data:
         collection.insert_one( document )
 
-        
+
 # returns a list of movies with the given title
 def by_title(title):
     cursor = collection.find( {"title" : title} )
@@ -57,14 +61,13 @@ def by_year_genre(year, genre):
         movie_list.append(movie)
     return movie_list
 
-def dropDB():
-    collection.drop()
 
+
+# fill the collection for import use
+fill_collection()
 
 # ---------------- TESTING ------------------
-fill_collection()
 if( __name__ == '__main__' ):
-    
     print "Searching by title for \"Iron Man\""
     print by_title("Iron Man")
     print "Searching by year for 2012"
