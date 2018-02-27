@@ -10,11 +10,14 @@ def root():
     if request.method == 'GET':
         return render_template("index.html")
     else:
-        year = request.form["year"]
+        year = int( request.form["year"] )
         genre = request.form["genre"]
         titleList = []
-        for movie in db.by_year_genre( year, genre ):
+        movieList = db.by_year_genre( year, genre )
+        # print movieList
+        for movie in movieList:
             titleList.append( movie["title"] )
+        # print titleList
         return render_template( "index.html", titles = titleList )
 
 

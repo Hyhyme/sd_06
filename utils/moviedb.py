@@ -11,12 +11,12 @@ import pymongo, json
 
 # connect to the server
 connection = pymongo.MongoClient("homer.stuy.edu")
-# drop the database
 connection.drop_database("goldmanJ-luoE")
-# make the database
+print 'database droped'
 db = connection[ "goldmanJ-luoE" ]
-# isolate the connection
+print 'database added'
 collection = db[ "movies" ]
+print 'collection added'
 
 # fills the collection with the data
 def fill_collection():
@@ -64,7 +64,9 @@ def by_year_genre(year, genre):
 
 
 # fill the collection for import use
+print 'filling the database...'
 fill_collection()
+print 'collection has been filled'
 
 # ---------------- TESTING ------------------
 if( __name__ == '__main__' ):
