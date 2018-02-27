@@ -16,3 +16,8 @@ def root():
         for movie in db.by_year_genre( year, genre ):
             titleList.append( movie["title"] )
         return render_template( "index.html", titles = titleList )
+
+
+if __name__=="__main__":
+    app.debug=True
+    app.run()
