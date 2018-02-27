@@ -20,7 +20,7 @@ collection = db[ "movies" ]
 
 # fills the collection with the data
 def fill_collection():
-    data = json.load( open( 'movies.json' ) )
+    data = json.load( open( 'data/movies.json' ) )
     # fill the collection
     for document in data:
         collection.insert_one( document )
